@@ -1,0 +1,268 @@
+.dashboard {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.muted {
+  color: var(--text-muted, #6b7280);
+}
+
+.grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  border: 1px solid rgba(127, 127, 127, 0.25);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+
+.big-number {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.breakdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breakdown li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.12);
+}
+
+.breakdown li:last-child {
+  border-bottom: none;
+}
+
+.status {
+  margin: 0;
+}
+
+.status-error {
+  color: #dc2626;
+}
+
+.simplefin-form {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.simplefin-form input {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.simplefin-form button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.simplefin-form button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.tab {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: rgba(127, 127, 127, 0.18);
+  border-color: rgba(127, 127, 127, 0.5);
+}
+
+.budget-under {
+  color: #16a34a;
+}
+
+.budget-near {
+  color: #d97706;
+}
+
+.budget-over {
+  color: #dc2626;
+}
+
+.meter {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(127, 127, 127, 0.18);
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.meter-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.meter-under {
+  background: #16a34a;
+}
+
+.meter-near {
+  background: #d97706;
+}
+
+.meter-over {
+  background: #dc2626;
+}
+
+.budget-row {
+  margin-bottom: 0.85rem;
+}
+
+.budget-row:last-child {
+  margin-bottom: 0;
+}
+
+.budget-row-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  margin-bottom: 0.25rem;
+}
+
+.budget-row .meter {
+  margin: 0.3rem 0;
+}
+
+.budget-row-note {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.status-line {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.manual-txn-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.manual-txn-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.manual-txn-form input,
+.manual-txn-form select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.manual-txn-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.manual-txn-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.manual-txn-actions button,
+.scan-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.manual-txn-actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.manual-txn-recent {
+  margin-top: 1rem;
+}
+
+.manual-txn-recent li {
+  font-size: 0.85rem;
+}
+
+.delete-link {
+  border: none;
+  background: transparent;
+  color: var(--text-muted, #6b7280);
+  cursor: pointer;
+  font: inherit;
+  padding: 0 0.15rem;
+}
+
+.delete-link:hover {
+  color: #dc2626;
+}
+
+/* Public demo banner (DEMO_MODE=true) */
+.demo-banner {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}

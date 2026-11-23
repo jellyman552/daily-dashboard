@@ -1,0 +1,32 @@
+# --- secrets ---
+.env
+.env.*
+!.env.example
+*.pem
+*token*.json
+!**/services/*token*.py
+
+# --- python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- cached data + linked-account secrets (regenerated / re-claimed, never committed) ---
+backend/data/*
+!backend/data/.gitkeep
+
+# --- node / frontend ---
+node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# --- editor / os ---
+.DS_Store
+.vscode/*
+!.vscode/extensions.json

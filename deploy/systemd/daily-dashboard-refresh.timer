@@ -1,0 +1,19 @@
+# Install at: /etc/systemd/system/daily-dashboard-refresh.timer
+# Then: sudo systemctl daemon-reload && sudo systemctl enable --now daily-dashboard-refresh.timer
+# Check it: systemctl list-timers | grep daily-dashboard
+
+[Unit]
+Description=Run the Daily Dashboard data refresh every few hours
+
+[Timer]
+# Every 3 hours, on Pacific clock boundaries (12am/3am/6am/9am/noon/3pm/6pm/9pm) -
+# regardless of the server's own timezone (Oracle instances default to UTC).
+# Conveniently still includes the original 6am refresh. SimpleFIN's flat
+# pricing means there's no per-call cost to checking more often; the actual
+# limit on freshness is how fast your bank/SimpleFIN sync a new purchase,
+# not how often we ask - going much more frequent than this buys little.
+OnCalendar=*-*-* 00/3:00:00 America/Los_Angeles
+Persistent=true
+
+[Install]
+WantedBy=timers.target

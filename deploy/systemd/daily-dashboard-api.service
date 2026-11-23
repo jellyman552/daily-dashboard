@@ -1,0 +1,28 @@
+# Install at: /etc/systemd/system/daily-dashboard-api.service
+# Then: sudo systemctl daemon-reload && sudo systemctl enable --now daily-dashboard-api
+
+[Unit]
+Description=Daily Dashboard API (FastAPI/uvicorn)
+After=network.target
+
+[Service]
+Type=simple
+# Adjust user/paths to match your deployment.
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/daily-dashboard/backend
+EnvironmentFile=/home/YOUR_USER/daily-dashboard/backend/.env
+ExecStart=/home/YOUR_USER/daily-dashboard/backend/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8420
+Restart=on-failure
+RestartSec=5
+
+# Runs on port 8420 so it doesn't collide with other services on the box,
+# and as its own unit it starts/stops/restarts independently of it.
+#
+# Binds 0.0.0.0 so both an SSH tunnel (arrives as 127.0.0.1) and Tailscale
+# (arrives as a 100.64.0.0/10 address) can reach it - but app.trusted_network
+# rejects everything outside loopback + Tailscale's ranges before it reaches
+# any route, so this is not actually open to the public internet even if the
+# cloud firewall's state can't be verified from here.
+
+[Install]
+WantedBy=multi-user.target

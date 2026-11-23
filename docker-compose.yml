@@ -1,0 +1,19 @@
+# Personal use: `cp backend/.env.example backend/.env`, fill it in, then
+# `docker compose up -d`. The port is published on 127.0.0.1 only: reach it
+# through an SSH tunnel or Tailscale, never the open internet (it has no login).
+services:
+  dashboard:
+    build: .
+    restart: unless-stopped
+    env_file: backend/.env
+    environment:
+      # Docker's bridge network, so requests via the 127.0.0.1 port mapping pass
+      # the trusted-network check.
+      EXTRA_TRUSTED_NETWORKS: 172.16.0.0/12
+    ports:
+      - "127.0.0.1:8420:8420"
+    volumes:
+      - data:/app/backend/data
+
+volumes:
+  data:

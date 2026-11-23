@@ -1,0 +1,13 @@
+# Install at: /etc/systemd/system/daily-dashboard-refresh.service
+# Paired with daily-dashboard-refresh.timer — do not `enable` this unit
+# directly, enable the timer instead.
+
+[Unit]
+Description=Daily Dashboard data refresh (Plaid, weather, Google Calendar)
+
+[Service]
+Type=oneshot
+User=YOUR_USER
+WorkingDirectory=/home/YOUR_USER/daily-dashboard/backend
+EnvironmentFile=/home/YOUR_USER/daily-dashboard/backend/.env
+ExecStart=/home/YOUR_USER/daily-dashboard/backend/.venv/bin/python -m scripts.refresh_data
